@@ -5,8 +5,9 @@
 	<title></title>
 </head>
 <body>
-{//$me.name}
-{//$me.sex|default=man}
-{$me['age']+1}
+<volist name="list" id="vo">
+<h1>{$vo.title}</h1><br/><p>{$vo.summary}</p><br/>
+</volist> 
+{$page}                           
 </body>
 </html>
