@@ -2,12 +2,23 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>普罗格</title>
+	<css href="__PUBLIC__/css/index.css" />
 </head>
 <body>
-<volist name="list" id="vo">
-<h1>{$vo.title}</h1><br/><p>{$vo.summary}</p><br/>
-</volist> 
-{$page}                           
+<!-- <div id="auth"><a href="">登录</div> -->
+<div id="header">首页</div>
+<div id="body">
+	<volist name="list" id="vo">
+		<h1><a href="www.baidu.com">{$vo.title}</a></h1>
+		<br/>
+		<p>{$vo.summary}</p><br/>
+	</volist> 
+</div>
+<div id="side">
+</div>
+<div id="page">
+{$page} 
+</div>                          
 </body>
 </html>

@@ -1,0 +1,46 @@
+a{
+	color: #333;
+    text-decoration: none;
+}
+a:hover{
+	color: #366;
+}
+
+div{
+	weight:75%;
+	margin: 0 auto;
+    max-width: 980px;
+}
+#auth{
+	text-align: right;
+}
+#header{
+	weight:100%;
+	color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 80px;
+    height:	80px;
+    text-align: center;
+}
+
+
+	text-align: right;
+}
+
+h1{
+	margin-bottom: 5px;
+}
+
+p{
+	margin-top: 2px;
+}
+
+.current{
+	margin:10px;
+}
+
+.next{
+	margin:10px;
+}
