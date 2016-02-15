@@ -3,6 +3,9 @@ namespace Admin\Model;
 use Think\Model;
 class AuthModel extends Model{
 
+	protected $tableName = 'Admin';
+ 
+
 	public function loginsubmit(){
 		if(empty($_POST['username']) || empty($_POST['password'])){
 			return false;
@@ -26,4 +29,5 @@ class AuthModel extends Model{
 			return false;
 		}
 	}
+	
 }
