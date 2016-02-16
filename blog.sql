@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-02-14 18:42:51
+Date: 2016-02-16 22:59:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,13 +37,13 @@ INSERT INTO `admin` VALUES ('1', 'root', 'root');
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
-  `artical_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '文章编号',
+  `article_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '文章编号',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
   `content` text NOT NULL COMMENT '内容',
-  `release_date` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '发布日期',
+  `release_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '发布日期',
   `summary` varchar(255) DEFAULT '' COMMENT '摘要',
-  PRIMARY KEY (`artical_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`article_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
@@ -54,4 +54,5 @@ INSERT INTO `article` VALUES ('3', 'Day One 2', '    		<p>\r\n\r\n</p><p>\r\n\r\
 INSERT INTO `article` VALUES ('4', '3D Touch 屏幕电子秤的实现', '    		<p>\r\n\r\n</p><p>自从 iPhone 6s 发布以来，不少开发者都在研究用 3D Touch 屏幕检测物体重量的可行性。虽然从理论上来说硬件是完全支持的，但是 Apple 却一直不在软件方面提供支持。两个月前国外有人利用私有 API 强行实现了它，可却被 App Store 拒绝上架，大家只能无奈地看看演示视频来感受这个神奇的功能。</p><p>iPhone 6s + 铁勺子 = 电子秤？虽然听起来不可思议，可就在今天上午，我无意间发现了用 Javascript 检测 3D Touch 屏幕压力的方法，并且在浏览器里直接实现了电子秤功能！不需要上架审核，也不用下载任何应用，只要有一把普通的金属勺子，在 iPhone 6s 上用自带的 Safari 浏览器打开</p><p><a href=\"https://www.dandyweng.com/playground/3d-touch-scale/\">这个页面</a></p><p><p></p></p><p>（或扫描这个二维码）就能开始玩啦！</p><p>\r\n\r\n</p><h3>使用方法</h3><p>第一步：先将手机放在平坦的表面上，再把金属勺子轻轻地放在屏幕的感应区上；</p><p>第二步：记下勺子的重量，拿开勺子，拉动屏幕上方的“皮重调节”滑块至抵消勺子的自身重量的位置；</p><p>第三步：再把勺子轻轻放回感应区，此时重量应显示为 0，如有误差则重复第二步；</p><p><p></p></p><p>第四步：拿起勺子，把要称重的物体放在勺子上，再一起轻放在感应区上即可。</p>\r\n		<p><br></p>', '2016-01-08 17:52:28', 'iPhone 6s + 铁勺子 = 电子秤？');
 INSERT INTO `article` VALUES ('5', '二十岁', '    		<p>\r\n\r\n</p><p>二十岁生日，这个我一直觉得非常遥远的日子，忽然就来到眼前。相比之前令我期待许久的十八岁，二十岁却或多或少给我一种措手不及的感觉。这不仅意味着我不再是一个十几岁的少年，而是我的人生由此步入了一个全新的阶段。之前的我可以心无旁骛，仅专注于学习和提高自己，而在这个新阶段里则需考虑更多——立业，甚至成家。这也意味着，从现在开始我要迈上一个新的台阶，以一个真正成年人的标准来要求自己。在新标准下，能拍出好看的摄影作品或者设计出精美的网站不再是值得自豪的事情。面对接下来的挑战，我深知自己还有太多不足之处，但却充满信心。</p><p>前路漫漫，还有太多风景等待着我去探索和发现。</p><p><img style=\"max-width:100%;\" src=\"https://dn-ssl-dw-blog.qbox.me/files/2015/10/selfie-at-mount-dongda.jpg\"></p><p><p></p></p><p>&nbsp;</p>\r\n		<p><br></p>', '2015-10-14 17:52:37', '二十岁生日，这个我一直觉得非常遥远的日子，忽然就来到眼前。');
 INSERT INTO `article` VALUES ('6', 'iPod classic', '    		<p>\r\n\r\n</p><p>第一次见到 iPod 的时候，我的年龄应该还是个位数。记得那时第一款彩屏 iPod 刚刚发布，竟然有 60G 的容量——当时我的 MP4 只有 512M，家里台式电脑的硬盘也只有 20G 而已。对于那时的我来说，60G 简直就是个天文数字。当然，它的价格也不比天文数字小多少。从那时起，iPod 在我心目中就是“神一般的存在”：以后有钱了一定要买一台！</p><p>十年时光荏苒，不知不觉间，存储容量进入了 TB 时代，我也成了一个拥有各种 Apple 产品的“果粉”，iPhone 上的一个 app 就能实现甚至超越 iPod 的所有功能。不过，也许是我对乔布斯时代依然有着某种情结，心底里还是想买一台 iPod classic，毕竟转盘（clickwheel）也是他的经典设计之一。可理性却告诉我，它已经没有多少实用价值，买来也不会常用的。</p><p><p></p></p><p>这个问题让我这个典型的天秤座一直纠结到去年九月十日——iPod classic 悄然停售的日子，Tim Cook 对此给出的解释是：</p>\r\n		<p>\r\n\r\n</p><p><p></p></p><blockquote><p>We couldn’t get the parts any more. They don’t make them any more. We would have to make a whole new product… the engineering work to do that would be massive. The number of people who wanted it is very small.</p></blockquote><p><br></p>', '2014-12-17 17:52:45', '第一次见到 iPod 的时候，我的年龄应该还是个位数。');
-INSERT INTO `article` VALUES ('7', '人品第一，作品第二', '    		<p>\r\n\r\n</p><p>说来惭愧，转眼间从发布上一篇博文至今已经八个月有余，2014 年也在匆匆碌碌之中过去了一大半。直到最近两天，才终于有了些心境，挤出些时间，静心坐下来设计与开发我个人网站的今年新版本。在新版上线之前，我觉得有必要先谈一谈我对某些网页设计爱好者“山寨”我网站的看法。</p><p>网站去年的版本刚上线没几天，因为一个偶然的机会，我发现有人直接复制我的前端代码和图片等静态文件，稍作修改就变成了自己的个人网站。居然会有人山寨我的网站？这激起了我的好奇心，于是开始运用一些技术手段进行监测，结果大大超乎我的想像：山寨还真不是一般的多。除了原封不动地复制所有前端代码之外，某些和我有相同兴趣爱好的人，甚至连我的文字说明和摄影作品都不放过——只是修改了自我介绍而已，令人哭笑不得。更有甚者，竟将所有前端代码都应用到了一个商业项目中，成为某“网页设计工作室”的官方网站！</p><p><p><a href=\"https://dn-ssl-dw-blog.qbox.me/files/2014/08/copycat_deleted.jpg\"></a></p></p><p>每当我发现一个新的“山寨网站”都会截图留念，在此分享其中一小部分，且供大家一笑，如有冒犯，可随时联系我删除：</p>\r\n		<p><br></p>', '0000-00-00 00:00:00', '说来惭愧，转眼间从发布上一篇博文至今已经八个月有余，2014 年也在匆匆碌碌之中过去了一大半。');
+INSERT INTO `article` VALUES ('7', '人品第一，作品第二', '    		<p>\r\n\r\n</p><p>说来惭愧，转眼间从发布上一篇博文至今已经八个月有余，2014 年也在匆匆碌碌之中过去了一大半。直到最近两天，才终于有了些心境，挤出些时间，静心坐下来设计与开发我个人网站的今年新版本。在新版上线之前，我觉得有必要先谈一谈我对某些网页设计爱好者“山寨”我网站的看法。</p><p>网站去年的版本刚上线没几天，因为一个偶然的机会，我发现有人直接复制我的前端代码和图片等静态文件，稍作修改就变成了自己的个人网站。居然会有人山寨我的网站？这激起了我的好奇心，于是开始运用一些技术手段进行监测，结果大大超乎我的想像：山寨还真不是一般的多。除了原封不动地复制所有前端代码之外，某些和我有相同兴趣爱好的人，甚至连我的文字说明和摄影作品都不放过——只是修改了自我介绍而已，令人哭笑不得。更有甚者，竟将所有前端代码都应用到了一个商业项目中，成为某“网页设计工作室”的官方网站！</p><p><p><a href=\"https://dn-ssl-dw-blog.qbox.me/files/2014/08/copycat_deleted.jpg\"></a></p></p><p>每当我发现一个新的“山寨网站”都会截图留念，在此分享其中一小部分，且供大家一笑，如有冒犯，可随时联系我删除：</p>\r\n		<p><br></p>', '2015-04-08 22:57:20', '说来惭愧，转眼间从发布上一篇博文至今已经八个月有余，2014 年也在匆匆碌碌之中过去了一大半。');
+INSERT INTO `article` VALUES ('11', '二十岁', '						    		&lt;p&gt;\r\n\r\n&lt;/p&gt;&lt;p&gt;二十岁生&lt;/p&gt;&lt;p&gt;前路漫漫，还有太多风景等待着我去探索和发现。修改&lt;/p&gt;&lt;p&gt;&lt;img style=&quot;max-width:100%;&quot; src=&quot;https://dn-ssl-dw-blog.qbox.me/files/2015/10/selfie-at-mount-dongda.jpg&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n		&lt;p&gt;&lt;br&gt;&lt;/p&gt;	    		\r\n				    		\r\n			', '2016-02-16 22:36:14', '二十岁生日，这个我一直觉得非常遥远的日子，忽然就来到眼前。');
