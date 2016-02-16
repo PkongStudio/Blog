@@ -1,7 +1,7 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-	'DB_TYPE'=>'mysql',//数据库类型
+	'DB_TYPE'=>'mysql',//数据库类型 由于全部采用PDO方式，所以DB_TYPE需要配置为实际的数据库类型
 	'DB_HOST'=>'localhost',//数据库服务器地址
 	'DB_NAME'=>'blog',//数据库名
 	'DB_USER'=>'root',//数据库用户
