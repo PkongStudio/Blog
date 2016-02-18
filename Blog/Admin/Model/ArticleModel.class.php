@@ -44,7 +44,7 @@ class ArticleModel extends Model {
     	$p = I('get.p');//$p赋值
 		$count = $obj->count();// 查询满足要求的总记录数
 		$Page  = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数
-		$list['list'] = $obj->field('article_id,title,release_date')->order('article_id desc')->page($p.',5')->select();
+		$list['list'] = $obj->field('content',true)->order('article_id desc')->page($p.',5')->select();
 		$list['page'] = $Page->show();// 分页显示输出
 		return $list;
 	}
