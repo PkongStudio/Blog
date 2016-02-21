@@ -6,19 +6,25 @@ class IndexController extends Controller {
 	//显示首页
     public function index(){
 		$articleDate = $this->showArticleList();//显示文章列表
-
+        //$this->cm();
+        $this->display('article');
     }
 
     //显示文章列表
     private function showArticleList() {
-    	$article = M('article'); // 实例化artcle对象
-    	$p = I('get.p',1);//$p赋值
-		$list = $article->page($p.',5')->select();
-		$this->assign('list',$list);// 赋值数据集
-		$count      = $article->count();// 查询满足要求的总记录数
-		$Page       = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数
-		$show       = $Page->show();// 分页显示输出
-		$this->assign('page',$show);// 赋值分页输出
-		$this->display(); // 输出模板
+    	$obj = D('Article');
+    	$data = $obj->listArt();
+		$this->assign('list', $data['list']);
+		$this->assign('page', $data['page']);
+    }
+
+    //评论
+    public function cm(){
+        $article_id = I('get.id',0);
+        $obj = D('Comment');
+        $data = $obj->getComment();
+        $this->assign('comment', $data);
+        dump($data);
+        $this->display('comment');
     }
 }

@@ -17,7 +17,7 @@ class ArticleModel extends Model {
 	}
 
 	//添加
-	public function write() { 
+	public function write(){ 
 		$obj = M('article');
 		if($data = $this->createData()){
 			$obj->add($data);
@@ -28,7 +28,7 @@ class ArticleModel extends Model {
 	}
 
 	//修改
-	public function modify() {
+	public function modify(){
 		$obj = M('article');
 		if($data = $this->createData()){
 			$obj->save($data);
@@ -38,14 +38,22 @@ class ArticleModel extends Model {
 		}
 	}
 
+	//删除
+	public function delete(){
+		$obj = M('article');
+		if($obj->delete($_GET['id'])){
+			return true;
+		}
+	}
+
 	//列表
 	public function listArt(){
-		$obj = M('article'); // 实例化artcle对象
-    	$p = I('get.p');//$p赋值
-		$count = $obj->count();// 查询满足要求的总记录数
-		$Page  = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数
-		$list['list'] = $obj->field('content',true)->order('article_id desc')->page($p.',5')->select();
-		$list['page'] = $Page->show();// 分页显示输出
+		$obj = M('article'); 
+    	$p = I('get.p');
+		$count = $obj->count();
+		$Page  = new \Think\Page($count,5);
+		$list['list'] = $obj->order('article_id desc')->page($p.',5')->select();
+		$list['page'] = $Page->show();
 		return $list;
 	}
 
@@ -53,6 +61,8 @@ class ArticleModel extends Model {
 	public function createData(){
 		$obj = M('article');
 		if($data = $obj->validate($this->data_vail_rules)->create()){
+			$obj = D('Image');
+			$data['cover'] = $obj->getCover();
 			return $data;
 		}else{
 			$this->error = $obj->geterror();
@@ -69,5 +79,13 @@ class ArticleModel extends Model {
 		}else{
 			return false;
 		}		
+	}
+
+	//封面照片处理
+	public function coverImage(){
+		$img = D('Image');
+		$res = $img->adjustImagesize();
+
+		return $res;				
 	}
 }

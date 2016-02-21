@@ -6,19 +6,20 @@
 	<css href="__PUBLIC__/css/index.css" />
 </head>
 <body>
-<div id="auth"><a href="__APP__/Admin/Admin/login">登录</div>
+<div id="auth"><a href="__APP__/Admin/Auth/login">登录</div>
 <div id="header">首页</div>
 <div id="body">
 	<volist name="list" id="vo">
-		<h1><a href="www.baidu.com">{$vo.title}</a></h1>
+		<h1><a href="">{$vo.title}</a></h1>
 		<br/>
-		<p>{$vo.summary}</p><br/>
+		<p>{$vo.summary}{$vo.release_date}</p><br/>
+		<img src="{$vo.cover}">
 	</volist> 
 </div>
 <div id="side">
 </div>
 <div id="page">
 {$page} 
-</div>                          
+</div>                         
 </body>
 </html>

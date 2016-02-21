@@ -36,11 +36,39 @@ class ArticleController extends AccessController {
 				}
 			}else{
 				if($obj->modify()){
-					$this->success('修改成功','edit',2);
+					$img = D('Image');
+					$res = $img->adjustImagesize();
+					$this->success('修改成功','edit',3);
 				}else{
 					$this->error($obj->getErrorMsg(),'',1);
 				}
 			}
 		}
 	}
+
+	//删除
+	public function delete(){
+		$obj = D('Article');
+		if($obj->delete()){
+			$this->success('已删除',U('Article/edit'),2);
+		}
+	}
+
+	//图片上传
+	public function upload(){
+	    //$upload = new \Think\Upload();// 实例化上传类
+	    //$upload->maxSize   =     0 ;// 设置附件上传大小
+	    //$upload->exts      =     array();// 设置附件上传类型
+	    //$upload->rootPath  =     './Public/'; // 设置附件上传根目录
+	    //$upload->savePath  =     './image/'; // 设置附件上传（子）目录
+	    // 上传文件 
+	    //$info   =   $upload->upload();
+	    //if(!$info) {// 上传错误提示错误信息
+	       // echo 'error|'.$upload->getError();
+	    //}else{// 上传成功
+	        //echo 'error|'.var_dump($info);
+	    //}
+	    echo var_dump($_FILES);
+	}
 }
+	

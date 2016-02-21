@@ -24,12 +24,13 @@
 		<include file="./Blog/Admin/View/Admin/navbar.html" />
 	</div>
 	<div id="main">
-		<form name="input" action="__URL__/post" method="post">
+		<form name="input" action="__URL__/post" method="post" enctype="multipart/form-data">
 			<input type="text" name="title" placeholder="标题" value="{$title}"/>
 			<textarea id="textarea1" name="content" >
 			{$content}	    		
 			</textarea>
 			<input type="text" name="summary" placeholder="简介" value="{$summary}"/>
+			<input type="file" name="pic"  accept="image/jpeg,image/gif,image/png" />
 			<input type="hidden" name="article_id" value="{$article_id}" />
 			<input type="submit" value="提交">
 		</form>
@@ -45,6 +46,7 @@
 	<script type="text/javascript" src="__PUBLIC__/wangEditor/dist/js/wangEditor.min.js"></script>
 	<script type="text/javascript">
     var editor = new wangEditor('textarea1');
+    editor.config.uploadImgUrl = '__URL__/upload';
     editor.create();
 </script>
 </script>

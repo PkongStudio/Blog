@@ -1,0 +1,45 @@
+.body{
+	background: #e8e8e6;
+}
+#navigation{
+	float: right;
+	margin-top: 30px;
+	/*margin-right: 1%;*/
+	margin-right: 483px;
+	list-style: none;
+}
+#navigation_more{
+	cursor: pointer;
+}
+ul li{
+	float: left;
+	position: relative;
+	width: 80px;
+	height: 50px;
+	color: #5e5e5d;
+}
+ul li ul {
+	display: none;
+	position: absolute;
+	margin-top: 10.5px;
+	border-radius: 5px;
+} 
+ul li:hover ul {
+	display: block;
+	left: 0px;
+	position: absolute;
+}
+ul li ul li{
+	float: none;
+	list-style: none;
+	line-height: 50px;
+	padding-left: 10px;
+	padding-right: 0px;
+	margin-left: -50px;
+	width: 150px;
+	height: 50px;
+	border-top: 1px solid rgba(255, 255, 255, 0.9);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	background: #f4f4f4;
+	box-shadow: 0px 1px 8px 1.5px rgba(0, 0, 0, 0.3), 0px 10px 50px 5px rgba(0, 0, 0, 0.2);
+}
