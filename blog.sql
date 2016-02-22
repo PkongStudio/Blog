@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-02-22 00:10:26
+Date: 2016-02-22 17:09:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,7 +44,7 @@ CREATE TABLE `article` (
   `summary` varchar(255) DEFAULT '' COMMENT '摘要',
   `cover` smallint(6) unsigned DEFAULT NULL,
   PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
@@ -57,13 +57,13 @@ INSERT INTO `article` VALUES ('14', '治愈人心的美式裸熊', '												
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
-  `cm_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `article_id` smallint(6) NOT NULL,
-  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `pid` int(11) NOT NULL DEFAULT '0',
   `nickname` varchar(255) NOT NULL,
-  `comment` varchar(255) NOT NULL,
-  `release_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`cm_id`)
+  `content` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -76,20 +76,33 @@ INSERT INTO `comment` VALUES ('4', '1', '1', '昵称4', '内容4', '2016-02-20 1
 INSERT INTO `comment` VALUES ('5', '1', '3', '昵称5', '内容5', '2016-02-20 15:36:39');
 
 -- ----------------------------
--- Table structure for msgboard
+-- Table structure for msg_board
 -- ----------------------------
-DROP TABLE IF EXISTS `msgboard`;
-CREATE TABLE `msgboard` (
+DROP TABLE IF EXISTS `msg_board`;
+CREATE TABLE `msg_board` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nickname` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of msgboard
+-- Records of msg_board
 -- ----------------------------
+INSERT INTO `msg_board` VALUES ('1', '昵称1', '留言内容1', '0', '2016-02-22 14:43:29');
+INSERT INTO `msg_board` VALUES ('2', '昵称2', '留言内容2', '0', '2016-02-22 14:43:42');
+INSERT INTO `msg_board` VALUES ('3', '昵称3', '留言内容3', '0', '2016-02-22 14:43:53');
+INSERT INTO `msg_board` VALUES ('4', '昵称4', '留言内容4', '2', '2016-02-22 14:44:22');
+INSERT INTO `msg_board` VALUES ('5', '昵称5', '留言内容5', '4', '2016-02-22 14:44:42');
+INSERT INTO `msg_board` VALUES ('6', '昵称6', '留言内容6', '2', '2016-02-22 14:45:04');
+INSERT INTO `msg_board` VALUES ('7', '昵称7', '留言内容7', '0', '2016-02-22 15:47:15');
+INSERT INTO `msg_board` VALUES ('8', '昵称8', '留言内容8', '0', '2016-02-22 15:47:33');
+INSERT INTO `msg_board` VALUES ('9', '昵称9', '留言内容9', '0', '2016-02-22 15:47:36');
+INSERT INTO `msg_board` VALUES ('10', '昵称10', '留言内容10', '0', '2016-02-22 15:47:43');
+INSERT INTO `msg_board` VALUES ('13', '小熊', '很漂亮', '0', '2016-02-22 17:03:03');
+INSERT INTO `msg_board` VALUES ('14', '85632', '886', '0', '2016-02-22 17:03:16');
 
 -- ----------------------------
 -- Table structure for photo

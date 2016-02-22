@@ -5,8 +5,9 @@ class IndexController extends Controller {
 
 	//显示首页
     public function index(){
-		$articleDate = $this->showArticleList();//显示文章列表
-        //$this->cm();
+		$this->showArticleList();//获取文章列表
+        $this->getMsgboard();//获取留言板
+
         $this->display('article');
     }
 
@@ -16,6 +17,21 @@ class IndexController extends Controller {
     	$data = $obj->listArt();
 		$this->assign('list', $data['list']);
 		$this->assign('page', $data['page']);
+    }
+
+    //获取留言板留言榜
+    public function getMsgboard() {
+        $obj = D('MsgBoard');
+        $data = $obj->getMsg();
+        $this->assign('mb',$data);
+    }
+
+    //添加留言
+    public function addMsg(){
+        $obj = D('MsgBoard');
+        $obj->writeMsg();
+        $this->getMsgboard();
+        $this->display('msgBoard');
     }
 
     //评论

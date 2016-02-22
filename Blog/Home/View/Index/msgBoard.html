@@ -1,0 +1,14 @@
+          <div id="message_wirte_frame">
+            <img src="__PUBLIC__/image/writeMessage_over.png" id="message_wirte_over"> 
+          </div>
+        </div>
+        <volist name="mb" id="vo"><!-- 留言板遍历起点 -->
+        <div id="m1" class="message_margin"> <!-- 这里是留言内容框 -->
+          <img src="__PUBLIC__/image/hr.png" class="message_hr">
+          <div class="message_content">  
+            <div class="message_name">{$vo.nickname}</div>
+            <div class="message_page">{$vo.content}</div>
+          </div>
+        </div>
+        </volist><!-- 留言板遍历终点 -->
+      </div>

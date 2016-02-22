@@ -8,5 +8,5 @@ return array(
 	'DB_PWD'=>'',//数据库用户密码
 	'DB_PORT'=>'3306',//数据库端口(默认3306)，可以不配置
 	'DB_PREFIX'=>'',//数据库表前缀
-	'SHOW_PAGE_TRACE' =>true, 
+	//'SHOW_PAGE_TRACE' =>true, 
 );

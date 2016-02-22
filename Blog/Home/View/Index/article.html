@@ -79,29 +79,27 @@
             <img src="__PUBLIC__/image/writeMessage_over.png" id="message_wirte_over"> 
           </div>
         </div>
+        <volist name="mb" id="vo"><!-- 留言板遍历起点 -->
         <div id="m1" class="message_margin"> <!-- 这里是留言内容框 -->
           <img src="__PUBLIC__/image/hr.png" class="message_hr">
           <div class="message_content">  
-            <div class="message_name">来客1</div>
-            <div class="message_page">留言留言留言</div>
+            <div class="message_name">{$vo.nickname}</div>
+            <div class="message_page">{$vo.content}</div>
           </div>
         </div>
-        <div id="m2" class="message_margin"> <!-- 这里是留言内容框 -->
-          <img src="__PUBLIC__/image/hr.png" class="message_hr">
-          <div class="message_content">  
-            <div class="message_name">来客1</div>
-            <div class="message_page">留言留言留言</div>
-          </div>
-        </div>
+        </volist><!-- 留言板遍历终点 -->
       </div>
       <div class="write_message">
-        <p>邮箱or昵称： <input type="text" name="name" /></p>
-        <p>写下你想说的吧： <input type="text" name="contents" /></p>
+        <p>邮箱or昵称： <input type="text" name="name" id="nickname"/></p>
+        <p>写下你想说的吧： <input type="text" name="contents" id="message"/></p>
+        <button id="send">发送</button><!-- 发送按钮 -->
       </div>
     </div>
     <script type="text/javascript" src="__PUBLIC__/javascript/head.js"></script>
     <script type="text/javascript" src="__PUBLIC__/javascript/body.js"></script>
     <script type="text/javascript" src="__PUBLIC__/javascript/center.js"></script>
+    <!-- 留言板发送 -->
+    <script type="text/javascript" src="__PUBLIC__/javascript/sendMsg.js"></script>
 
   </body>
 </html>

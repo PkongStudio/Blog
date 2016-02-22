@@ -8,7 +8,7 @@ class ArticleModel extends Model {
 	//列表
 	public function listArt(){
 		$obj = M('article'); 
-    	$p = I('get.p');//获取页码
+    	$p = I('get.p',1);//获取页码
 		$count = $obj->count();
 		$Page  = new \Think\Page($count,5);
 		//获取文章及封面
