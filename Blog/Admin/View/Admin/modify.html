@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang = "zh-CN">
+	<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>文章修改</title>
+    <meta name = "Description" content = "红岩大作业">
+    <meta name = "Keywords" content = "作业,大作业">
+    <!-- JQuery引入 -->
+    <script src = "__PUBLIC__/jquery-2.2.0.min.js"></script> 
+    <!-- CSS引入 -->
+    <link rel = "stylesheet" type = "text/css" href = "__PUBLIC__/pageChange/css/frame.css">
+    <link rel = "stylesheet" type = "text/css" href = "__PUBLIC__/pageChange/css/color.css">
+    <!-- 富文本框引入 -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/pageChange/RTE/dist/css/wangEditor.css">
+    <style type="text/css">
+        #textarea1 {
+            min-height: 250px;
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+    <!-- 图片的引用 -->
+    
+  </head> 
+  <body class="body">
+    <div id="mask"></div>
+    <a href="__APP__/Admin/Index/index"><div id="back">
+    <!-- 左上返回文章页的按钮 -->
+      <div id="backIcon_box">
+        <i id="backIcon" class="iconfont">&#xe634;</i>
+      </div>
+      <div id="backFont_box">
+        <div id="backFont">点我返回文章主页</div>
+      </div>
+    </div></a>
+    <div class="write_newPage_frame">
+    <!-- 写新文章的内容框 -->
+      <form name="newPage" method="post" action="__APP__/Admin/Article/post" enctype="multipart/form-data">
+        <div class="write_newPage">
+          <div class="write_title">
+            <div class="write_newPage_guide">取个名字：</div>
+            <!-- <form name="write_title"> -->
+            <input type="text" name="title" placeholder="写下新文章的标题" class="title_frame" value="{$title}" id="title_input"/>
+            <input type="hidden" name="article_id" placeholder="文章id" class="title_frame" value="{$article_id}" id="article_id_input"/>
+            <!-- </form> -->
+          </div>
+          <div class="write_introduction">
+            <div class="write_introduction_guide">描述一下：</div>
+            <!-- <form name="introduction_title"> -->
+            <textarea class="introduction_frame" placeholder="写下新文章的简介" id="summary_input">{$summary}</textarea>
+            <!-- </form> -->
+          </div>
+          <div class="add_photo">
+            <div class="add_photo_guide">添加封面：</div>
+            <div class="addPhoto_frame">
+              <!-- <form name="form" action="" method="POST" enctype="multipart/form-data"> -->
+                <div class="wrap ">
+                  <div class="album-old">
+                    <div class="upload-btn btn-old">
+                      <input class="addPhoto_frame" type="file" name="pic" />
+                    </div>
+                    <div class="upload-img "></div> 
+                  </div>
+                </div>
+              <!-- </form> -->
+            </div>
+          </div>
+          <div class="main_page">
+            <div class="main_page_guide">文章本体：</div>
+            <div class="newPage">
+              <div class="container">
+                <textarea id="textarea1" name="content" >
+                      {$content}          
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div id="write_input" id="art_submit_btn">
+            <div class="input_photo">
+              <!-- <img src="image/input_Button_over.png" class="input_pnoto_change"> -->
+              <input type="submit" class="input_pnoto_change" name="input" alt="image/input_Button_over.png" value=""methoud>
+            </div>
+          </div>
+        </div>
+      </form>   
+      <div class="write_newPage_close">
+        <a href=""><i class="iconfont">&#xe6ad;</i></a>
+      </div>
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/pageChange/javascript/body.js"></script>
+    <!-- <script type="text/javascript" src="__PUBLIC__/pageChange/javascript/modify_submit.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/pageChange/RTE/dist/js/wangEditor.js"></script>
+    <script type="text/javascript">
+        // 阻止输出log
+        // wangEditor.config.printLog = false;
+        
+        var editor = new wangEditor('textarea1');
+
+        // 上传图片
+        editor.config.uploadImgUrl = '__APP__/Admin/Article/upload';
+        
+        // editor.config.menus = [
+        //     'img',
+        //     'insertcode',
+        //     'eraser',
+        //     'fullscreen'
+        // ];
+
+        // onchange 事件
+        // editor.onchange = function () {
+        //     console.log(this.$txt.html());
+        // };
+
+        // 取消过滤js
+        // editor.config.jsFilter = false;
+
+        // 取消粘贴过来
+        // editor.config.pasteFilter = false;
+
+        // 设置 z-index
+        // editor.config.zindex = 20000;
+
+        // 语言
+        // editor.config.lang = wangEditor.langs['en'];
+
+        // 自定义菜单UI
+        // editor.UI.menus.bold = {
+        //     normal: '<button style="font-size:20px; margin-top:5px;">B</button>',
+        //     selected: '.selected'
+        // };
+        // editor.UI.menus.italic = {
+        //     normal: '<button style="font-size:20px; margin-top:5px;">I</button>',
+        //     selected: '<button style="font-size:20px; margin-top:5px;"><i>I</i></button>'
+        // };
+
+        editor.create();
+    </script>
+  </body>
+</html>

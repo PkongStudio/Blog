@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang = "zh-CN">
+	<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>详细内容</title>
+    <meta name = "Description" content = "红岩大作业">
+    <meta name = "Keywords" content = "作业,大作业">
+    <!-- JQuery引入 -->
+    <script src = "__PUBLIC__/jquery-2.2.0.min.js"></script> 
+    <!-- CSS引入 -->
+    <link rel = "stylesheet" type = "text/css" href = "__PUBLIC__/artic/css/frame.css">
+    <link rel = "stylesheet" type = "text/css" href = "__PUBLIC__/artic/css/color.css">
+  </head> 
+  <body class="body">
+    <a href="#" onclick="javascript :history.back(-1);"><div id="back">
+    <!-- 左上返回文章页的按钮 -->
+      <div id="backIcon_box">
+        <i id="backIcon" class="iconfont">&#xe634;</i>
+      </div>
+      <div id="backFont_box">
+        <div id="backFont">点我返回</div>
+      </div>
+      </a>
+    </div></a>
+    <div id="contents" class="contens_white">
+    <!-- 文章本体 -->
+      <div id="page_body">
+        <div id="body_frame">
+          <div id="address">
+          <!-- 文章右边的位置 -->
+            <div class="address_guide address_guide_gray">你所在的位置是：</div>
+            <a href=""><div class="address address_tap_gray">主页-</div></a>
+            <a href=""><div class="address address_tap_gray">文章页-</div></a>
+            <a href=""><div class="address address_tap_gray">文章编号:{$art.article_id}</div></a>
+          </div>
+          <div id="page_contents">
+          <!-- 文章本体具体内容 -->
+            <div id="title" class="title_black">{$art.title}</div>
+            <div id="introduction" class="introduction_gray">{$art.release_date}</div>
+            <!-- <div id="cover"><img src="__PUBLIC__/artic/image/girl.jpg"></div> -->
+            <div id="main" class="main_gray">
+              <div class="p">
+                {$art.content|htmlspecialchars_decode}
+              </div>
+            </div>
+            <div id="hr"><img src="__PUBLIC__/artic/image/page_hr.png"></div>
+            <div id="tag">
+            <!-- 文章tag -->
+              <div class="tag_guide tag_guide_gray">此篇文章标签:</div>
+              <div class="tag"><a class="tag_gray" href="" >{$art.cate_name}</a></div>
+              <!-- <div class="tag"><a class="tag_gray" href="" >tag2</a></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="message_frame">
+    <!-- 评论区 -->
+      <div id="message_guide" class="message_guide_frame">
+        <div class="prompt"><img src="__PUBLIC__/artic/image/prompt.png"></div>
+        <div class="yes"><img src="__PUBLIC__/artic/image/yes_over.png" class="yes_over"></div>
+        <div class="no"><img src="__PUBLIC__/artic/image/no_over.png" class="no_over"></div>
+      </div>
+      <div id="message_content_frame">
+        <div id="message_wirte">
+          <div id="message_wirte_frame">
+            <img src="__PUBLIC__/artic/image/writeMessage_over.png" id="message_wirte_over" title="写篇新留言"> 
+          </div>
+        </div>
+        <div id="message_contents_frame">
+        <!-- 评论具体内容 -->
+        <volist name="cm" id="cm"><!-- 一级评论 -->
+          <div id="m{$id}" class="message_margin">
+          <!-- 这里是评论内容框 -->
+            <img src="__PUBLIC__/artic/image/hr.png" class="message_hr">
+            <div class="message_content">  
+            <!-- 评论具体内容 -->
+              <div class="message_name">{$cm.nickname}</div>
+              <div class="message_page">{$cm.content}</div>
+            </div>
+            <div class="back_message_button_box">
+              <div class="back_message_button" cmid={$cm.id}>
+                <div class="back_icon_box"><i id="back_icon" class="iconfont">&#xe60f;</i></div>
+                <div class="back_word">回复</div>
+              </div>
+            </div>
+            <volist name="cm.child" id="child"><!-- 二级评论 -->
+            <div class="double_back_frame">
+            <!-- 评论现有评论的区域 -->
+              <div class="double_back" cmid={$child.id}>
+                <div class="double_back_name">{$child.nickname} 回复 {$cm.nickname}</div>
+                <div class="double_back_contents">{$child.content}</div>
+              </div>
+              <!-- <div class="double_back_message_button_box">
+                <div class="double_back_message_button">
+                  <div class="back_icon_box"><i id="double_back_icon" class="iconfont">&#xe6ec;</i></div>
+                  <div class="double_back_word">回复</div>
+                </div>
+              </div> -->
+              <!-- <div class="line_box">
+                <div class="line">
+                  <i class="iconfont">&#xe604;</i>
+                </div>
+              </div> -->
+            </div>
+            </volist>
+          </div>
+          </volist>
+        </div>
+        <div id="message_close">
+          <i class="iconfont">&#xe6ad;</i>
+        </div>
+      </div>
+      <div class="write_message">
+      <!-- 写新文章 -->
+        <form name="message" method="post">
+          <div id="email">
+            <p class="id_guide write_message_guide_gray">留个联系方式吧 </p>
+            <!-- <form name="ID"> -->
+            <input type="text" name="name" placeholder="邮箱 or 昵称" class="id_frame" id="nickname_input"/>
+            <input type="hidden" name="pid" class="id_frame" id="pid_input"/><!--  隐藏框：所回复的评论的id-->
+            <input type="hidden" name="article_id" class="id_frame" id="article_id_input" value="{$art.article_id}"/><!--  隐藏框：所回复的文章的id-->
+            <!-- </form> -->
+          </div>
+          <div id="write">
+            <p class="txt_guide write_message_guide_gray">写下你想说的吧：</p>
+            <!-- <form name="WORD"> -->
+            <p><textarea class="txt" placeholder="这里写你的留言" id="content_input"></textarea></p>
+            <!-- </form> -->
+          </div>
+          <div id="input">
+            <div class="input_photo" id="cm_submit_btn">
+              <!-- <img src="image/input_Button_over.png" class="input_pnoto_change"> -->
+              <input class="input_pnoto_change"  name="input" alt="image/input_Button_over.png" methoud>
+            </div>
+          </div>
+          <div id="write_close">
+            <i class="iconfont">&#xe6ad;</i>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/artic/javascript/body.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/artic/javascript/cm_submit.js"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang = "zh-CN">
+	<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>评论修改</title>
+    <meta name = "Description" content = "红岩大作业">
+    <meta name = "Keywords" content = "作业,大作业">
+    <!-- JQuery引入 -->
+    <script src = "../jquery-2.2.0.min.js"></script> 
+    <!-- CSS引入 -->
+    <link rel = "stylesheet" type = "text/css" href = "css/frame.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/color.css">
+    <!-- 富文本框引入 -->
+  </head> 
+  <body class="body">
+    <!-- <div id="write_message"> -->
+      <!-- 写新文章 -->
+      <div id="border">
+        <form name="message" method="post">
+          <div id="email">
+            <p class="id_guide write_message_guide_gray">留个联系方式吧 </p>
+            <!-- <form name="ID"> -->
+            <input type="text" name="name" placeholder="邮箱 or 昵称" class="id_frame"/>
+            <!-- </form> -->
+          </div>
+          <div id="write">
+            <p class="txt_guide write_message_guide_gray">写下你想说的吧：</p>
+            <!-- <form name="WORD"> -->
+            <p><textarea class="txt" placeholder="这里写你的留言"></textarea></p>
+            <!-- </form> -->
+          </div>
+          <div id="input">
+            <div class="input_photo">
+              <!-- <img src="image/input_Button_over.png" class="input_pnoto_change"> -->
+              <input class="input_pnoto_change" name="input" alt="image/input_Button_over.png" methoud>
+            </div>
+          </div>
+        </form>
+      </div>
+    <!-- </div> -->
+    <a href=""><div id="back">
+    <!-- 左上返回文章页的按钮 -->
+      <div id="backIcon_box">
+        <i id="backIcon" class="iconfont">&#xe634;</i>
+      </div>
+      <div id="backFont_box">
+        <div id="backFont">点我返回文章主页</div>
+      </div>
+    </div></a>
+    <script type="text/javascript" src="javascript/body.js"></script>
+  </body>
+</html>

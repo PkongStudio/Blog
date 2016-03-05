@@ -1,0 +1,37 @@
+<volist name="cm" id="cm"><!-- 一级评论 -->
+  <div id="m{$id}" class="message_margin">
+  <!-- 这里是评论内容框 -->
+    <img src="__PUBLIC__/artic/image/hr.png" class="message_hr">
+    <div class="message_content">  
+    <!-- 评论具体内容 -->
+      <div class="message_name">{$cm.nickname}</div>
+      <div class="message_page">{$cm.content}</div>
+    </div>
+    <div class="back_message_button_box">
+      <div class="back_message_button" cmid={$cm.id}>
+        <div class="back_icon_box"><i id="back_icon" class="iconfont">&#xe60f;</i></div>
+        <div class="back_word">回复</div>
+      </div>
+    </div>
+    <volist name="cm.child" id="child"><!-- 二级评论 -->
+    <div class="double_back_frame">
+    <!-- 评论现有评论的区域 -->
+      <div class="double_back" cmid={$child.id}>
+        <div class="double_back_name">{$child.nickname} 回复 {$cm.nickname}</div>
+        <div class="double_back_contents">{$child.content}</div>
+      </div>
+      <!-- <div class="double_back_message_button_box">
+        <div class="double_back_message_button">
+          <div class="back_icon_box"><i id="double_back_icon" class="iconfont">&#xe6ec;</i></div>
+          <div class="double_back_word">回复</div>
+        </div>
+      </div> -->
+      <!-- <div class="line_box">
+        <div class="line">
+          <i class="iconfont">&#xe604;</i>
+        </div>
+      </div> -->
+    </div>
+    </volist>
+  </div>
+  </volist>

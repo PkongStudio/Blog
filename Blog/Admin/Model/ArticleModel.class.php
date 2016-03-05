@@ -52,7 +52,7 @@ class ArticleModel extends Model {
     	$p = I('get.p');
 		$count = $obj->count();
 		$Page  = new \Think\Page($count,5);
-		$list['list'] = $obj->order('article_id desc')->page($p.',5')->select();
+		$list['list'] = $obj->field('article_id,title,release_date,summary,photo.url as cover,cate.cate_name')->join('LEFT JOIN photo ON article.cover = photo.id')->join('LEFT JOIN cate ON article.cate_id = cate.id')->order('article_id desc')->select();
 		$list['page'] = $Page->show();
 		return $list;
 	}
@@ -61,8 +61,10 @@ class ArticleModel extends Model {
 	public function createData(){
 		$obj = M('article');
 		if($data = $obj->validate($this->data_vail_rules)->create()){
-			$obj = D('Image');
-			$data['cover'] = $obj->getCover();
+			if(!empty($_FILES['pic']['name'])){
+				$obj = D('Image');
+				$data['cover'] = $obj->getCover();
+			}
 			return $data;
 		}else{
 			$this->error = $obj->geterror();

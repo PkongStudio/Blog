@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>登录</title>
-	<meta charset=utf-8>
-	<style type="text/css">
-	*{font-family: "微软雅黑"}
-		</style>
-</head>
-<body>
-<form name="input" action="__URL__/login" method="post">
-<lable for="username">账号：</label>
-<input type="text" name="username" id="username" placeholder="账号：root"/>
-<lable for="password">密码：</lable>
-<input type="password" name="password" id="password" placeholder="密码：root"/>
-<input type="submit" value="登录"><a href="#">
-<a href="__ROOT__/index.php">返回blog</a>
-
-
-</body>
+<html lang = "zh-CN">
+	<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>登陆页</title>
+    <meta name = "Description" content = "红岩大作业">
+    <meta name = "Keywords" content = "作业,大作业">
+    <!-- JQuery引入 -->
+    <script src = "__PUBLIC__/jquery-2.2.0.min.js"></script> 
+    <!-- CSS引入 -->
+    <link rel = "stylesheet" type = "text/css" href = "__PUBLIC__/login/css/frame.css">
+  </head> 
+  <body>
+    <div id="back_box">
+      <img class="back" src="__PUBLIC__/login/image/background.png">
+    </div>
+    <div id="mask"></div>
+    <div id="login_box">
+      <div id="login_innerbox">
+        <div id="logo"><img id="logo_over" src="__PUBLIC__/login/image/logo_show.png"></div>
+        <div id="login_frame">
+          <img id="login" src="__PUBLIC__/login/image/Container_over.png">
+        </div>
+        <div id="input_box">
+            <form>
+              <input class="text" type="text" name="username" placeholder="请输入用户名" id="uname_input">
+              <input class="pass" type="password" name="password" placeholder="请输入密码" id="pw_input">
+                <img class="input_img" name="input" src="__PUBLIC__/login/image/login.png" id="login_btn">
+              <div class="forget_box">
+                <p id="forget" onclick="alert('暂不支持该功能')">忘记密码?</p>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/login/javascript/body.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/login/javascript/login_submit.js"></script>
+  </body>
 </html>

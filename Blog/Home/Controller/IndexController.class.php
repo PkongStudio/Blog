@@ -5,18 +5,38 @@ class IndexController extends Controller {
 
 	//显示首页
     public function index(){
-		$this->showArticleList();//获取文章列表
+		$this->getArticleList();//获取文章列表
         $this->getMsgboard();//获取留言板
 
-        $this->display('article');
+        $this->display();
     }
 
-    //显示文章列表
-    private function showArticleList() {
+    //获得文章列表
+    private function getArticleList() {
     	$obj = D('Article');
     	$data = $obj->listArt();
 		$this->assign('list', $data['list']);
 		$this->assign('page', $data['page']);
+    }
+
+    //显示文章详情页
+    public function art(){
+        $this->getArt();
+        $id = I('get.id/d','0','int');
+        $this->cm($id);
+        $this->display();
+    }
+
+    //获取文章
+    private function getArt(){
+        $obj = D('Article');
+        $id = I('get.id/d','0','int');
+        $data = $obj->getArt($id);
+        if (empty($data)) {
+            $this->error('文章已删除或不存在');
+        }else{
+            $this->assign('art',$data);
+        }
     }
 
     //获取留言板留言榜
@@ -35,12 +55,30 @@ class IndexController extends Controller {
     }
 
     //评论
-    public function cm(){
-        $article_id = I('get.id',0);
+    public function cm($id){    
         $obj = D('Comment');
-        $data = $obj->getComment();
-        $this->assign('comment', $data);
-        dump($data);
-        $this->display('comment');
+        $data = $obj->getComment($id);
+        $this->assign('cm', $data);
     }
+
+    //添加评论
+    public function addCm(){
+        $obj = D('Comment');
+        $obj->writeCm();
+        $id = $_POST['article_id'];
+        $this->cm($id);
+        $this->display('cm');
+    }
+
+    //通过分类id查找
+    public function searchByCate(){
+        $obj = D('Article');
+        $data = $obj->searchByCate();
+        $this->assign('list', $data['list']);
+        $this->assign('page', $data['page']);
+        $this->assign('cate', $data['cate']);
+        $this->getMsgboard();//获取留言板
+        $this->display('index');
+    }
+
 }

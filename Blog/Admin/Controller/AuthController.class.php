@@ -16,15 +16,18 @@ class AuthController extends AccessController {
     public function checklogin(){
     	$authobj = D('Auth');
     	if($authobj->loginsubmit()){
-    		$this->success('登陆成功',U('Admin/index'),1);
+            $arr = array(
+                'success' => true, 
+                'msg'     => "登陆成功"
+                );
+            echo json_encode($arr);
     	}else{
-    		$this->error('账号或密码错误');
+            $arr = array(
+                'success' => false, 
+                'msg'     => $authobj->error
+                );
+            echo json_encode($arr);
     	}
-    }
-
-    //后台访问控制测试
-    function hello(){
-    	echo '后台访问控制有问题啊';
     }
 
     //注销

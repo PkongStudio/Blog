@@ -1,0 +1,34 @@
+.body{
+	background: #e8e8e6;
+}
+.write_message_guide_gray{
+	color: #625f5f;
+}
+.contens_white{
+	background: #ffffff;
+}
+.tag_guide_gray{
+	color: #7E8282;
+}
+.tag_gray{
+	color: #969696;
+}
+.icon_red{
+	color: #e93c07;
+	opacity: 0.8;
+}
+.introduction_gray{
+	color: #4C556E;
+}
+.title_black{
+	color: #283734;
+}
+.main_gray{
+	color: #4F4D4D;
+}
+.address_tap_gray{
+	color: #9f9b9c;
+}
+.address_guide_gray{
+	color: #bbbbbb;
+}

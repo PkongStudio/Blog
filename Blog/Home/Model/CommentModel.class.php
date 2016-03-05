@@ -4,11 +4,11 @@ use Think\Model;
 class CommentModel extends Model {
 
 	//获取评论
-	public function getComment(){
+	public function getComment($id){
 		$obj = M('comment');
-		$cm = $obj->select();
+		$cm = $obj->where('article_id ='.$id)->order('id desc')->select();
 		$cm = self::unlimitedSort($cm);
-		var_dump($cm);
+		//dump($cm);
 		return $cm;
 	}
 
@@ -16,11 +16,21 @@ class CommentModel extends Model {
 	static public function unlimitedSort($data, $pid = 0) {
 		$result = array();
 		foreach ($data as $value) {
-			if($value['parent_id'] == $pid){
-				$value['child'] = self::unlimitedSort($data, $value['cm_id']);
+			if($value['pid'] == $pid){
+				$value['child'] = self::unlimitedSort($data, $value['id']);
 				$result[] = $value;
 			}
 		}
 		return $result;
+	}
+
+	//添加评论
+	public function writeCm(){
+		$obj = M('comment');
+		if(empty($_POST['pid'])){
+			$_POST['pid'] = 0;
+		}
+		$data = $obj->create();
+		$obj->add($data);
 	}
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>仪表盘</title>
+	<style type="text/css">
+		#navbar{
+			width:10%;
+			float:left;
+		}
+		#main{
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<include file="./Blog/Admin/View/Admin/topbar.html" />
+	<div id="navbar">
+		<include file="./Blog/Admin/View/Admin/navbar.html" />
+	</div>
+	<div id="main">
+		<volist name="cate" id="vo">
+			<h1>
+				<a href="">{$vo.cate_name}</a>
+				<!-- <a href="__MODULE__/Cate/post/id/{$vo.article_id}" >(编辑)</a> -->
+				<a href="__MODULE__/Article/delCate/id/{$vo.id}" >(删除)</a>
+			</h1>
+			<br/>
+		</volist> 
+		<!-- <div id="page">{$page}</div> -->
+	</div>  
+</body>

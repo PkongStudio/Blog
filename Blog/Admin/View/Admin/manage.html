@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>后台管理</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab:400,700">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/manage/css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/manage/css/style.css">
+		<script src = "__PUBLIC__/jquery-2.2.0.min.js"></script> 
+	</head>
+	<body>
+		<div class="container">
+			<div class="st-container">
+				<input type="radio" name="radio-set" checked="checked" id="st-control-1">
+				<a href="#st-panel-1">文章管理</a>
+				<input type="radio" name="radio-set" id="st-control-2">
+				<a href="#st-panel-2">评论管理</a>
+				<div class="st-scroll">
+					<section class="st-panel" id="st-panel-1">
+						<div id="box">
+							<div class="table">
+								<volist name="list" id="art">
+								<div class="box hide">
+									<div class="contents">
+											<a href="" class="title">{$art.title}</a>
+											<div class="easy">{$art.release_date}</div>
+											<div class="change"><a href="__MODULE__/Article/post/id/{$art.article_id}">编辑</a><a href="__MODULE__/Article/delete/id/{$art.article_id}">删除</a></div>
+									</div>
+								</div>
+								</volist>
+							</div>
+						</div>
+						<a href="__APP__/Home/"><div id="back">
+				    <!-- 左上返回文章页的按钮 -->
+				      <div id="backIcon_box">
+				        <i id="backIcon" class="iconfont">&#xe634;</i>
+				      </div>
+				      <div id="backFont_box">
+				        <div id="backFont">点我返回文章主页</div>
+				      </div>
+				    </div></a>
+						<!-- <h2>导航1</h2> -->
+						<!-- <p>这里是段落1</p> -->
+					</section>
+					<section class="st-panel st-color" id="st-panel-2">
+						<div id="box2">
+							<div class="table">
+								<!-- <div class="boxframe"> -->
+								<volist name="cm" id="cm">
+									<div class="box hide">
+										<div class="contents">
+											<div class="comment">{$cm.content}</div>
+											<div class="address">{$cm.nickname} to {$cm.parent|default="Our Blog"}</div>
+											<div class="address">来自：<a href="__APP__/Home/Index/art/id/{$cm.article_id}">{$cm.article_title}</a></div>
+											<div class="change"><a href="__MODULE__/Comment/delCm/id/{$cm.id}">删除</a></div>
+										</div>
+									</div>
+								</volist>	
+								<!-- </div> -->
+							</div>
+						</div>
+						<!-- <div class="box">
+							<div class="table">
+								<div class="contents"></div>
+							</div>
+						</div> -->
+						<!-- <div class="st-desc"></div> -->
+						<!-- <h2>导航2</h2> -->
+						<!-- <p>这里是段落2</p> -->
+					</section>
+				</div>
+			</div>
+		</div>
+	  <script src = "__PUBLIC__/manage/javascript/body.js"></script>
+	</body>
+</html>

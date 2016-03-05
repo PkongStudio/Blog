@@ -22,7 +22,7 @@ class ArticleController extends AccessController {
 			}else{
 				if($data = $obj->findById()){
 					$this->assign($data);
-					$this->display('Article/post');
+					$this->display('Admin/modify');
 				}else{
 					$this->error('出现错误');
 				}
@@ -30,15 +30,13 @@ class ArticleController extends AccessController {
 		}else{
 			if(empty($_POST['article_id'])){
 				if($obj->write()){
-					$this->success('发布成功','edit',2);
+					$this->success('发布成功',U('Index/index'),1);
 				}else{
 					$this->error($obj->getErrorMsg(),'',1);
 				}
 			}else{
 				if($obj->modify()){
-					$img = D('Image');
-					$res = $img->adjustImagesize();
-					$this->success('修改成功','edit',3);
+					$this->success('修改成功',U('Index/index'),1);
 				}else{
 					$this->error($obj->getErrorMsg(),'',1);
 				}
@@ -46,29 +44,22 @@ class ArticleController extends AccessController {
 		}
 	}
 
+	
 	//删除
 	public function delete(){
 		$obj = D('Article');
 		if($obj->delete()){
-			$this->success('已删除',U('Article/edit'),2);
+			$this->success('已删除',U('Index/index'),2);
 		}
 	}
 
-	//图片上传
+	//上传文章中图片
 	public function upload(){
-	    //$upload = new \Think\Upload();// 实例化上传类
-	    //$upload->maxSize   =     0 ;// 设置附件上传大小
-	    //$upload->exts      =     array();// 设置附件上传类型
-	    //$upload->rootPath  =     './Public/'; // 设置附件上传根目录
-	    //$upload->savePath  =     './image/'; // 设置附件上传（子）目录
-	    // 上传文件 
-	    //$info   =   $upload->upload();
-	    //if(!$info) {// 上传错误提示错误信息
-	       // echo 'error|'.$upload->getError();
-	    //}else{// 上传成功
-	        //echo 'error|'.var_dump($info);
-	    //}
-	    echo var_dump($_FILES);
+		$obj = D('Image');
+		$url = $obj->upload('wangEditorH5File');
+		$obj->writeUrl($url);
+		echo $url;
 	}
+
 }
 	

@@ -1,14 +1,56 @@
-          <div id="message_wirte_frame">
-            <img src="__PUBLIC__/image/writeMessage_over.png" id="message_wirte_over"> 
-          </div>
-        </div>
-        <volist name="mb" id="vo"><!-- 留言板遍历起点 -->
-        <div id="m1" class="message_margin"> <!-- 这里是留言内容框 -->
-          <img src="__PUBLIC__/image/hr.png" class="message_hr">
+      <!-- 留言框架 -->
+      <volist name="mb" id="mb"><!-- 留言板输出 -->
+        <div id="m{$mb.id}" class="message_margin"> 
+        <!-- 这里是留言内容框 -->
+          <img src="__PUBLIC__/homePage/image/hr.png" class="message_hr">
           <div class="message_content">  
-            <div class="message_name">{$vo.nickname}</div>
-            <div class="message_page">{$vo.content}</div>
+            <div class="message_name">{$mb.nickname}</div>
+            <div class="message_page">{$mb.content}</div>
+          <!-- 这里是留言内容框的具体内容 -->
           </div>
+          <div class="back_message_button_box">
+          <!-- 回复评论的按钮 -->
+            <div class="back_message_button" msgid="{$mb.id}" >
+              <div class="back_icon_box"><i id="back_icon" class="iconfont">&#xe60f;</i></div>
+              <div class="back_word">回复</div>
+            </div>
+          </div>
+          <volist name="mb.child" id="child"><!-- 二级评论输出 -->            
+          <div class="double_back_frame">
+          <!-- 回复原有评论的评论框 -->
+            <div class="double_back">
+            <!-- 回复原有评论的具体内容 -->
+              <div class="double_back_name">{$child.nickname} 回复 {$mb.nickname}</div>
+              <div class="double_back_contents">{$child.content}</div>
+            </div>
+            <div class="double_back_message_button_box">
+            <!-- 回复原有评论的按钮 -->
+              <div class="double_back_message_button" msgid="{$child.id}">
+                <div class="back_icon_box"><i id="double_back_icon" class="iconfont">&#xe6ec;</i></div>
+                <div class="double_back_word">回复</div>
+              </div>
+            </div>
+            <!-- <div class="line_box">
+              <div class="line">
+                <i class="iconfont">&#xe604;</i>
+              </div>
+            </div> -->
+          </div>
+          <volist name="child.child" id="grandson"><!-- 三级评论输出 -->                        
+          <div class="double_back_frame">
+          <!-- 回复原有评论的评论框 -->
+            <div class="double_back">
+            <!-- 回复原有评论的具体内容 -->
+              <div class="double_back_name">{$grandson.nickname} 回复 {$child.nickname}</div>
+              <div class="double_back_contents">{$grandson.content}</div>
+            </div>
+            <!-- <div class="line_box">
+              <div class="line">
+                <i class="iconfont">&#xe604;</i>
+              </div>
+            </div> -->
+          </div>
+          </volist><!-- 三级评论结束 -->
+          </volist><!-- 二级评论结束 -->
         </div>
-        </volist><!-- 留言板遍历终点 -->
-      </div>
+      </volist>

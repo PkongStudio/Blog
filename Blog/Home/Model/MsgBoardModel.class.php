@@ -15,6 +15,9 @@ class MsgBoardModel extends Model {
 	//添加留言
 	public function writeMsg(){
 		$obj = M('msg_board');
+		if(empty($_POST['pid'])){
+			$_POST['pid'] = 0;
+		}
 		$data = $obj->create();
 		$obj->add($data);
 	}
