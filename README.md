@@ -16,7 +16,7 @@
 数据库blog：[文件blog.sql][1]
 
 ## 管理员账号密码
-+ 账号：sunmile 密码：Hywx!(root)
+账号：sunmile 密码：Hywx!(root)
 
 ## 作者
 Frontend：ParaSLee
