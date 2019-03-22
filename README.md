@@ -1,20 +1,26 @@
-# Blog
-## blog.sql
-- 数据库名：blog
-- 由navicat生成
+# Our Blog
+![Blog渐变底.png](https://i.loli.net/2019/03/22/5c94b6a55a155.png)
 
-## 文件主要在
-- /Public/ 
-- /Blog/Home/
-- /Blog/Admin/Controller/
-- /Blog/Admin/Model/
-- /Blog/Admin/View/Index/ 现在后的台html在这，其余文件夹为简版后台的html
-- 有些文件多出来没用是因为没写完，还没用上
+## 系统要求
++ PHP 5.6
++ Mysql
 
-##账号密码
-- 账号：sunmile
-- 密码：Hywx!(root)
+## 功能
++ 博客主页
++ 后台管理
++ 留言板
++ 评论区
++ 文章封面图
 
-##学员
-- 前端：文俊霖
-- 后端：魏恒琨
+## 数据库sql文件
+数据库blog：[文件blog.sql][1]
+
+## 管理员账号密码
++ 账号：sunmile 密码：Hywx!(root)
+
+## 作者
+Frontend：ParaSLee
+Backend： kongmile
+
+
+  [1]: https://github.com/PkongStudio/Blog/blob/master/blog.sql
